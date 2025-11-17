@@ -264,7 +264,7 @@ def msr(riskfree_rate, er, cov):
         vol = portfolio_vol(weights, cov)
         return -(r - riskfree_rate)/vol
     
-    weights = minimize(neg_sharpe, init_guess,
+    weights = minimize(neg_sharpe, init_guess, # minimize the negative sharpe ratio, same as maximizing the sharpe ratio
                        args=(riskfree_rate, er, cov), method='SLSQP',
                        options={'disp': False},
                        constraints=(weights_sum_to_1,),
